@@ -34,6 +34,7 @@ with open(csvpath) as csvfile:
         change = int(row[1]) - previous_row
         net_change = net_change + change
         previous_row = int(row[1])
+
         if change > greatest_increase:
             greatest_increase = change
         if change < greatest_decrease:
@@ -41,7 +42,7 @@ with open(csvpath) as csvfile:
 
 
 # print average change
-average_change = net_change / counter
+average_change = net_change / (counter - 1)
 
 # print answer
 
