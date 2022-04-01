@@ -54,7 +54,7 @@ Your analysis should look similar to the following:
   Greatest Decrease in Profits: Feb-14 ($-1825558)
   ```
 
-In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+In addition, your final script should both f.write the analysis to the terminal and export a text file with the results.
 
 ## PyPoll Instructions
 
@@ -88,7 +88,7 @@ Your analysis should look similar to the following:
   -------------------------
   ```
 
-In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+In addition, your final script should both f.write the analysis to the terminal and export a text file with the results.
 
 ## Hints and Considerations
 

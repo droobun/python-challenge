@@ -15,7 +15,7 @@ with open(csvpath) as csvfile:
 
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
-    # print("CSV Header: " + str(csv_header)
+    # f.write("CSV Header: " + str(csv_header)
     counter = 0
     net_amount = 0
     change = 0
@@ -23,6 +23,8 @@ with open(csvpath) as csvfile:
     net_change = 0
     greatest_increase = 0
     greatest_decrease = 0
+    increase_date = 0
+    decrease_date = 0
     # Read each row of data after the header
     for row in csvreader:
         
@@ -34,22 +36,25 @@ with open(csvpath) as csvfile:
         change = int(row[1]) - previous_row
         net_change = net_change + change
         previous_row = int(row[1])
+        date = (row[0])
 
         if change > greatest_increase:
             greatest_increase = change
+            increase_date = date
         if change < greatest_decrease:
             greatest_decrease = change
+            decrease_date = date
 
 
-# print average change
+# f.write average change
 average_change = net_change / (counter - 1)
 
-# print answer
-
-print("Financial Analysis")
-print("--------------------------")
-print("Total Months: " + str(counter))
-print("Total: $" + str(net_amount))
-print("Average Change: " + str(round(average_change,2)))
-print("Greatest Increase in Profits: $" + str(greatest_increase))
-print("Greatest Decrease in Profits: $" + str(greatest_decrease))
+# f.write answer
+with open('analysis/PyBank_Analysis.txt', 'w') as f:
+    f.write("Financial Analysis\n")
+    f.write("--------------------------\n")
+    f.write("Total Months: " + str(counter) + "\n")
+    f.write("Total: $" + str(net_amount) + "\n")
+    f.write("Average Change: $" + str(round(average_change,2)) + "\n")
+    f.write("Greatest Increase in Profits: " + str(increase_date) + " ($" + str(greatest_increase) + ")\n")
+    f.write("Greatest Decrease in Profits: " + str(decrease_date) +  " ($" + str(greatest_decrease) + ")\n")
